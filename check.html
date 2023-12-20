@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>luana</title>
+    <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="system">
+    <header class="header">
+        <!-- <div class="header__inner"> -->
+        <h1 class="header__title header-title">
+            <a href="#">
+                <img src="./images/logo.png" alt="ロゴ">
+            </a>
+        </h1>
+
+        <nav class="header__nav nav" id="js-nav">
+            <ul class="nav__items nav-items">
+                <li class="nav-items__item"><a href="">ABOUT</a></li>
+                <li class="nav-items__item"><a href="style.html">SYSTEM</a></li>
+                <li class="nav-items__item"><a href="">STYLE</a></li>
+                <li class="nav-items__item"><a href="">MENU</a></li>
+                <li class="nav-items__item"><a href="">CHECK</a></li>
+            </ul>
+        </nav>
+        <button class="header__hamburger hamburger" id="js-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <!-- </div> -->
+    </header>
+
+    <main class="main">
+
+        <div class="mainvisual">
+            <img class="mainvisual__pic" src="./images/system.png" alt="">
+            <div class="mainvisual__item">
+            </div>
+        </div>
+        <div class="main__inner">
+            <h2 class="main__title">CHECK</h2>
+            <p class="main__text">気になる悩みについて</p>
+        </div>
+
+
+        <section class="check01">
+            <div class="autonomic-nerves autonomic-nerves__inner">
+                <h3 class="autonomic-nerves__title">自律神経の乱れのチェック表</h3>
+                <div class="checkbox">
+                    <div class="checkbox__list">
+                        <input type="checkbox" id="01-A" name="checkbox01" checked="checked">
+                        <label for="01-A" class="checkbox01">動悸がする</label>
+                        <input type="checkbox" id="01-B" name="checkbox01">
+                        <label for="01-B" class="checkbox01">頭痛・めまい・立ち眩みがある</label>
+                        <input type="checkbox" id="01-C" name="checkbox01">
+                        <label for="01-C" class="checkbox01">汗が異常に出る</label>
+                        <input type="checkbox" id="01-D" name="checkbox01">
+                        <label for="01-D" class="checkbox01">手足のしびれや震えが頻繁にある</label>
+                        <input type="checkbox" id="01-E" name="checkbox01">
+                        <label for="01-E" class="checkbox01">好きなものに対しても食欲がわかない</label>
+                        <input type="checkbox" id="01-F" name="checkbox01">
+                        <label for="01-F" class="checkbox01">肩こりや腰痛がある</label>
+                    </div>
+                    <div class="checkbox__list">
+                        <input type="checkbox" id="01-G" name="checkbox01" checked="checked">
+                        <label for="01-G" class="checkbox01">胸が苦しくなったり息切れがする</label>
+                        <input type="checkbox" id="01-H" name="checkbox01">
+                        <label for="01-H" class="checkbox01">寝つきが悪い</label>
+                        <input type="checkbox" id="01-I" name="checkbox01">
+                        <label for="01-I" class="checkbox01">夜中に起きると再度眠るまでに時間がかかる</label>
+                        <input type="checkbox" id="01-J" name="checkbox01">
+                        <label for="01-J" class="checkbox01">不安な気持ちやイライラすることが多い</label>
+                        <input type="checkbox" id="01-K" name="checkbox01">
+                        <label for="01-K" class="checkbox01">口や喉に違和感がある</label>
+                        <input type="checkbox" id="01-L" name="checkbox01">
+                        <label for="01-L" class="checkbox01">気分がしずみ、何事にもやる気が起こらない</label>
+                    </div>
+                </div>
+            </div>
+
+            <p class="check01__text01">チェック表に1つでもチェックが付いたら、自律神経失調症かもしれません。<br>
+                自律神経は2つの神経をコントロールしています。<br>
+                交感神経（体を動かすときに働く神経）と副交感神経（体を休めるときに働く神経）です。</p>
+
+            <p class="check01__text02">自律神経の乱れの原因は様々ですが、大きく分けて４つあります。</p>
+
+            <ul class="cause cause__inner">
+                <li class="cause__item">自律神経が乱れやすい体質</li>
+                <li class="cause__item">更年期障害</li>
+                <li class="cause__item">不規則な生活をしている</li>
+                <li class="cause__item">過度なストレスを感じる</li>
+            </ul>
+
+            <p class="check01__text02">簡単な対策として...</p>
+
+            <h4 class="">1 食事をする</h4>
+
+        </section>
+
+
+    </main>
+
+
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer-pc">
+                <img class="footer__logo" src="./images/logo.png" alt="ロゴ">
+                <small class="footer-pc__copy">@copyright</small>
+            </div>
+            <div class="footer__btn">
+                <div class="category">
+                    <h4 class="category__title">CATEGORY</h4>
+                    <ul class="category__list">
+                        <li class="category__item"><a href="">ABOUT</a></li>
+                        <li class="category__item"><a href="style.html">SYSTEM</a></li>
+                        <li class="category__item"><a href="">STYLE</a></li>
+                        <li class="category__item"><a href="">MENU</a></li>
+                        <li class="category__item"><a href="">CHECK</a></li>
+                    </ul>
+                </div>
+                <div class="sns">
+                    <h4 class="sns__title">SNS</h4>
+                    <ul class="sns__list">
+                        <li class="sns__item"><a href="">Instagram</a></li>
+                        <li class="sns__item"><a href="">LINE</a></li>
+                        <li class="sns__item"><a href="">公式アカウント luana</a></li>
+                    </ul>
+                </div>
+            </div>
+            <small class="footer-mb__copy">@copyright</small>
+        </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

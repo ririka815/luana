@@ -1,0 +1,1068 @@
+@charset "utf-8";
+$color-bg: #FFF5FB;
+$color-gold: #BAA05F;
+$color-font: #545454;
+$color-gray: #DEDDDD;
+
+
+$breakpoints: (
+    "sm": "screen and (min-width: 400px)",
+    "md": "screen and (min-width: 900px)",
+    "lg": "screen and (min-width: 1000px)",
+    "xl": "screen and (min-width: 1200px)",
+    ) !default;
+
+/* minixの設定 */
+@mixin mq($breakpoint) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+@mixin inner($w: 90%, $mw: 1500px) {
+    width: $w;
+    max-width: $mw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin flex($a: center, $j: space-between) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $j;
+    align-items: $a;
+}
+
+@mixin title($ta: center) {
+    font-size: (30/14)+em;
+    text-align: $ta;
+    font-family: 'Shippori Mincho B1',
+        serif;
+    font-weight: normal;
+    color: $color-gold;
+}
+
+
+
+html {
+    font-size: (14/16)*100%;
+
+    @include mq(md) {
+        font-size: 1em;
+    }
+}
+
+body {
+    background-color: $color-bg;
+    color: $color-font;
+    font-family: 'Times New Roman',
+        Times,
+        serif;
+    line-height: (40/16
+    );
+letter-spacing: 0.05em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+
+//header
+.header {
+    @include flex();
+    padding: 0 20px;
+
+    @include mq(md) {
+        padding: 0 80px;
+    }
+
+    &__inner {
+        @include inner();
+        height: inherit;
+        position: relative;
+    }
+
+    &__title {
+        img {
+            width: 80px;
+            height: auto;
+        }
+
+
+        @include mq(md) {
+            img {
+                width: 160px;
+            }
+        }
+    }
+
+
+
+    &__nav {
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        transform: translateX(100%);
+        background-color: #fff;
+        /*ハンバーガーメニュークリック時のナビゲーションメニュー背景色*/
+        transition: ease .4s;
+        /*ハンバーガーメニュークリック時のナビゲーションメニュー出現を遅延*/
+
+        @include mq(md) {
+            position: static;
+            transform: initial;
+            background-color: inherit;
+            height: inherit;
+            display: flex;
+            justify-content: flex-end;
+            width: 70%;
+        }
+    }
+
+
+    &__hamburger {
+        width: 48px;
+        height: 100%;
+    }
+}
+
+.hamburger {
+    background-color: transparent;
+    /*buttonタグデフォルトスタイルを打ち消し*/
+    border-color: transparent;
+    /*buttonタグデフォルトスタイルを打ち消し*/
+    z-index: 9999;
+
+    @include mq(md) {
+        display: none;
+    }
+
+    span {
+        width: 100%;
+        height: 1px;
+        background-color: $color-gold;
+        position: relative;
+        transition: ease .4s;
+        /*ハンバーガーメニュークリック時の三本線の動きを遅延*/
+        display: block;
+    }
+
+    span:nth-child(1) {
+        top: 0;
+    }
+
+    span:nth-child(2) {
+        margin: 8px 0;
+    }
+
+    span:nth-child(3) {
+        top: 0;
+    }
+}
+
+.header__nav.active {
+    transform: translateX(0);
+    z-index: 9999;
+}
+
+.hamburger.active {
+    span:nth-child(1) {
+        top: 5px;
+        transform: rotate(45deg);
+    }
+
+    span:nth-child(2) {
+        opacity: 0;
+    }
+
+    span:nth-child(3) {
+        top: -13px;
+        transform: rotate(-45deg);
+    }
+
+}
+
+.nav-items {
+    padding-top: 250px;
+    padding-bottom: 200px;
+
+    @include mq(md) {
+        padding-top: inherit;
+        padding-bottom: inherit;
+    }
+
+    &__item {
+        a {
+            color: $color-gold;
+            width: 100%;
+            display: block;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__item:last-child {
+        a {
+            margin-bottom: 0;
+        }
+    }
+
+    @include mq(md) {
+        &__item {
+            a {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.nav {
+
+    @include mq(md) {
+        &__items {
+            height: initial;
+            justify-content: space-between;
+
+            a {
+                padding-left: 55px;
+            }
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+
+
+
+
+
+// main
+.mainvisual {
+
+    &__pic {
+        width: 80%;
+        height: 280px;
+        object-fit: cover;
+        margin-left: auto;
+        border-radius: 30px 0 0 30px;
+    }
+
+    &__logo {
+        width: 180px;
+        height: auto;
+        margin-left: 30px;
+    }
+
+    @include mq(md) {
+        &__pic {
+            width: 80%;
+            height: 490px;
+            object-fit: cover;
+        }
+
+        &__logo {
+            width: 330px;
+            height: auto;
+            margin-left: 120px;
+        }
+
+    }
+
+    // &__item {
+    //     display: flex;
+    //     align-items: center;
+    // }
+}
+
+
+.main {
+
+    &__inner {
+        @include inner();
+    }
+}
+
+.about {
+    text-align: center;
+    padding: 140px 0 200px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mq(md) {
+        width: 60%;
+    }
+
+    &__title {
+        padding-bottom: 40px;
+
+        @include title();
+
+        @include mq(md) {
+            font-size: (45/16)+em;
+        }
+    }
+
+    &__text {
+        padding-bottom: 40px;
+    }
+
+    &__btn {
+        color: $color-font;
+        font-size: (16/14)+em;
+        border-bottom: 1px solid $color-font;
+
+
+        @include mq(md) {
+            font-size: (18/16)+em;
+        }
+    }
+
+}
+
+.category-btn {
+    @include mq(md) {
+        @include flex();
+    }
+}
+
+.card {
+    position: relative;
+
+
+    @include mq(md) {
+        width: 48.5%;
+    }
+
+
+    &__pic {
+        border-radius: 20px;
+        width: 100%;
+        height: 270px;
+        object-fit: cover;
+        margin-bottom: 45px;
+
+        @include mq(md) {
+            height: 400px;
+        }
+    }
+
+    &__text {
+        color: #fff;
+    }
+
+    &__term {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font-family: 'Shippori Mincho B1', serif;
+        font-size: (25/14)+em;
+
+        @include mq(md) {
+            font-size: (50/16)+em;
+        }
+    }
+
+    &__desc {
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+}
+
+.greeting {
+    padding-top: 220px;
+    background: linear-gradient(transparent, #FFF 70%, transparent);
+
+    &__inner {
+        @include inner($mw: 1100px);
+    }
+
+    &__title {
+        @include title();
+        padding-bottom: 100px;
+
+        @include mq(md) {
+            font-size: (45/16)+em;
+        }
+    }
+
+    &__pic {
+        border-radius: 20px;
+    }
+
+    &__list {
+        @include mq(md) {
+            @include flex($a: flex-end);
+
+        }
+    }
+
+    &__text {
+        @include mq(md) {
+            width: 50%;
+
+        }
+    }
+
+    &__pic {
+        @include mq(md) {
+            width: 40%;
+        }
+    }
+}
+
+.access {
+    padding: 250px 0 200px;
+
+    @include inner($w: 80%, $mw: 700px);
+
+    &__title {
+        @include title();
+        padding-bottom: 90px;
+    }
+
+    &__item {
+        display: flex;
+        padding-bottom: 40px;
+
+    }
+
+    &__term {
+        min-width: 120px;
+    }
+
+    @include mq(md) {
+        &__term {
+            min-width: 200px;
+            text-align: left;
+
+        }
+    }
+}
+
+.address {
+    line-height: (30/16);
+}
+
+.footer {
+    padding-bottom: 130px;
+
+    &__inner {
+        @include inner($w: 90%, $mw: 1300px);
+
+        @include flex();
+    }
+
+    &__logo {
+        width: 120px;
+        height: auto;
+        padding-bottom: 40px;
+
+        @include mq(md) {
+            padding-bottom: 80px;
+        }
+    }
+
+    .footer-pc {
+        @include mq(md) {
+            min-width: 250px;
+        }
+
+        &__copy {
+            display: none;
+
+            @include mq(md) {
+                display: block;
+                padding: 30px 0 30px 20px;
+            }
+        }
+    }
+
+    &__btn {
+        @include mq(md) {
+            width: 65%;
+        }
+    }
+
+    .category {
+
+        &__title {
+            border-bottom: 1px solid $color-font;
+        }
+
+        &__list {
+            @include flex($j: left);
+            padding-left: 0;
+            padding-bottom: 35px;
+        }
+
+        &__item {
+            padding-right: 35px;
+
+            a {
+                color: $color-font;
+            }
+        }
+
+    }
+
+    .sns {
+        &__title {
+            border-bottom: 1px solid $color-font;
+        }
+
+        &__list {
+            @include flex($j: left);
+            padding-left: 0;
+        }
+
+        &__item {
+            padding-right: 35px;
+
+            a {
+                color: $color-font;
+            }
+        }
+    }
+
+
+
+    .footer-mb {
+        &__copy {
+            display: block;
+            padding-top: 40px;
+
+            @include mq(md) {
+                display: none;
+            }
+        }
+    }
+
+}
+
+
+// system
+
+.main {
+    &__inner {
+        @include inner($mw: 1400px);
+    }
+
+    &__title {
+
+        @include title($ta: left);
+
+        @include mq(md) {
+            font-size: (55/16)+em;
+            padding-top: 40px;
+            height: 150px;
+        }
+    }
+
+    &__text {
+        position: relative;
+        padding-left: 100px;
+    }
+
+    &__text::before {
+        content: "";
+        display: block;
+        width: 15px;
+        height: 1px;
+        background-color: $color-font;
+        position: absolute;
+        top: 50%;
+        left: 70px;
+    }
+}
+
+
+
+// method
+.method {
+    margin: 110px 0 300px;
+
+    &__title {
+        padding-bottom: 40px;
+        text-align: center;
+        font-size: (20/14)+em;
+        color: $color-gold;
+        font-weight: normal;
+
+        @include mq(md) {
+            font-size: (30/14)+em;
+        }
+    }
+}
+
+
+
+.stepbar {
+    margin: 0 auto;
+    width: 80%;
+
+    &__wrap {
+        margin: 4em 0;
+        position: relative;
+
+
+        @include mq(md) {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+
+            //     &__wrap:nth-child(even) {}
+        }
+    }
+
+    &__title {
+        display: inline-flex;
+        align-items: center;
+        height: 80px;
+    }
+
+    &__circle {
+        display: inline-block;
+        width: 2em;
+        height: 2em;
+        content: "";
+        border-radius: 50%;
+        background-color: #fff;
+        border: 8px solid $color-gold;
+    }
+
+
+    &__num {
+        padding-left: 1em;
+        font-size: (50/14)+em;
+        color: $color-gold;
+
+        @include mq(md) {
+            font-size: (65/16)+em;
+        }
+    }
+
+    .step-list {
+        padding-left: 5.5em;
+
+        &__title {
+            margin: 0.5em 0;
+            font-weight: bold;
+            font-size: (20/14)+em;
+
+            @include mq(md) {
+                font-size: (30/16)+em;
+                padding: 15px 0;
+            }
+        }
+
+    }
+
+    &__line {
+        width: 3px;
+        height: calc(100% + 4em);
+        background-color: $color-gray;
+        position: absolute;
+        top: 3em;
+        left: 0.9em;
+        z-index: -1;
+    }
+
+    // &__line:last-of-type {
+    //     display: none;
+    // }
+
+    @include mq(md) {
+        width: 90%;
+    }
+
+}
+
+.stepbarwrap:last-of-type .stepline:last-of-type {
+    display: none;
+}
+
+
+
+
+//style
+.style {
+    &__inner {
+        @include inner($mw: 870px);
+    }
+}
+
+.first {
+    padding-top: 200px;
+
+    @include mq(md) {
+        @include flex($a: flex-start);
+    }
+
+    &__item {
+        padding-bottom: 100px;
+
+        @include mq(md) {
+            width: 40%;
+        }
+    }
+
+    &__pic {
+        border-radius: 15px;
+    }
+
+    &__text {
+        padding-top: 45px;
+    }
+}
+
+.basis {
+    &::-webkit-scrollbar {
+        height: 70px;
+    }
+
+    p {
+        text-align: center;
+        padding: 70px 0;
+    }
+
+    &__inner {
+        @include inner($mw: 1400px);
+
+        display: flex;
+        overflow-x: scroll;
+
+    }
+
+
+
+    &__pic {
+        width: 80%;
+        margin: 5px;
+        flex-shrink: 0;
+        border-radius: 15px;
+
+        @include mq(md) {
+            width: 24%;
+        }
+    }
+
+    .point {
+        padding: 180px 0;
+
+        @include mq(md) {
+            @include flex();
+
+        }
+
+        &__item {
+            @include mq(md) {
+                width: 45%;
+            }
+
+        }
+
+        &__pic {
+            border-radius: 15px;
+        }
+
+        &__text {
+            text-align: left;
+        }
+
+    }
+}
+
+.other {
+    padding: 150px 0 300px;
+
+    &__inner {
+        @include inner($mw: 1000px);
+    }
+
+    &__text {
+        font-size: (18/14)+em;
+        color: $color-gold;
+        text-align: center;
+        padding-bottom: 130px;
+
+        @include mq(md) {
+            font-size: (25/16)+em;
+        }
+    }
+
+    .unit {
+
+        @include mq(md) {
+            @include flex($a: flex-start);
+        }
+
+        &__item {
+
+            padding-bottom: 90px;
+
+            @include mq(md) {
+                width: 42%;
+                text-align: center;
+
+            }
+        }
+
+        &__pic {
+            border-radius: 50%;
+        }
+
+        &__text {
+            padding-top: 40px;
+        }
+    }
+}
+
+//menu
+
+.menu {
+    padding-bottom: 200px;
+
+    &__inner {
+        @include inner($mw: 830px);
+    }
+
+    &__text {
+        padding: 75px 0 40px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include mq(md) {
+            width: 700px;
+            text-align: center;
+        }
+    }
+}
+
+.wrap {
+    &__item {
+        @include flex();
+    }
+
+    &__about {
+        color: $color-gold;
+        padding: 60px 0 25px 20px;
+    }
+
+
+    &__text {
+        text-align: right;
+        font-size: (12/14)+em;
+        padding-top: 20px;
+
+        @include mq(md) {
+            font-size: (14/16)+em;
+        }
+    }
+}
+
+.card {
+
+    &__item {
+        @include flex();
+        background-color: #FFF;
+        padding: 25px;
+        border-radius: 8px;
+
+        @include mq(md) {
+            width: 830px;
+            padding: 30px;
+        }
+    }
+
+    &__title {
+        width: 65%;
+    }
+
+    &__price {
+        color: $color-gold;
+        border-left: 1px solid #b1b1b1;
+        font-size: (16/14)+em;
+        padding-left: 25px;
+        padding-right: 5px;
+
+        @include mq(md) {
+            font-size: (20/16)+em;
+            padding-left: 40px;
+        }
+    }
+}
+
+.another {
+    padding-top: 30px;
+}
+
+.lending {
+    padding: 150px 0 30px;
+
+    &__title {
+        padding-bottom: 30px;
+        font-size: (20/14)+em;
+
+        @include mq(md) {
+            font-size: (25/16)+em;
+        }
+    }
+}
+
+
+
+
+
+//check01
+.check01 {
+    &__text01 {
+        text-align: center;
+    }
+
+    &__text02 {
+        font-size: (18/14)+em;
+        text-align: center;
+        font-weight: bold;
+        margin: 200px 0 100px;
+    }
+}
+
+.autonomic-nerves {
+    position: relative;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 130px 0 150px;
+
+    &__inner {
+        @include inner($mw: 880px);
+    }
+
+    &__title {
+        font-size: (20/14)+em;
+        position: absolute;
+        top: -1.2em;
+        left: 13%;
+        color: $color-gold;
+
+        @include mq(md) {
+            font-size: (25/16)+em;
+            left: 32%;
+
+        }
+    }
+}
+
+
+
+input[type=checkbox] {
+    display: none;
+}
+
+.checkbox01 {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 30px;
+    position: relative;
+    width: auto;
+
+    &::before {
+        background: #fff;
+        border: 1px solid #231815;
+        content: '';
+        display: block;
+        height: 16px;
+        left: 5px;
+        margin-top: -8px;
+        position: absolute;
+        top: 50%;
+        width: 16px;
+    }
+
+    &::after {
+        border-right: 3px solid #ed7a9c;
+        border-bottom: 3px solid #ed7a9c;
+        content: '';
+        display: block;
+        height: 9px;
+        left: 10px;
+        margin-top: -7px;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        transform: rotate(45deg);
+        width: 5px;
+    }
+}
+
+
+input[type=checkbox]:checked+.checkbox01::after {
+    opacity: 1;
+}
+
+.checkbox {
+    padding: 45px 25px 30px 25px;
+
+    @include mq(md) {
+        @include flex();
+        padding: 80px;
+
+        &__list {
+            width: 45%;
+        }
+    }
+}
+
+.cause {
+    // -ms-writing-mode: tb-rl;
+    // writing-mode: vertical-rl;
+
+    &__inner {
+        @include inner($mw: 900px)
+    }
+
+    &__item {
+        font-size: (18/14)+em;
+        color: $color-gold;
+        letter-spacing: 0.1em;
+        list-style: disc;
+        padding-left: 20px;
+        padding-bottom: 50px;
+        width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include mq(md) {
+            padding-bottom: 50px;
+            width: 350px;
+            // font-size: (25/14)+em;
+        }
+    }
+}
